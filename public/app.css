@@ -1,38 +1,349 @@
-.App {
-  text-align: center;
+@charset "UTF-8";
+
+@font-face{
+    font-family: 'Rockwell';
+    src: url('fonts/Rockwell.TTF') format("opentype");
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face{
+    font-family: Roboto-Regular;
+    src: url('fonts/Roboto-Regular.ttf') format("opentype");
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@font-face{
+    font-family: Calisto;
+    src: url('fonts/Calisto.TTF');
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@font-face{
+    font-family: Roboto-Black;
+    src: url('fonts/Roboto-Black.ttf') format("opentype");
 }
 
-.App-link {
-  color: #61dafb;
+html, body{
+    font-family: 'Roboto-Regular';
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+	-webkit-touch-callout: none;        /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;     /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;			/* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color: black;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+*[contenteditable]{
+	-webkit-user-select: auto;
+}
+#app{
+    width: 100vw;
+    height: 100vh;
+    max-width: 500px;
+    margin: auto;
+    background-color: #e4e4e4;
+}
+
+#title{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    color: white;
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    border-bottom: 1px solid #585858;
+    background-color: #576572;
+}
+
+#title div{
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    width: 50px;
+}
+
+#body{
+    overflow: auto;
+}
+
+.menu {
+    position: absolute;
+    width: 100vw;
+    height: 70vh;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+}
+
+.menubutt{
+    display: block;
+    width: 70%;
+    max-width: 350px;
+    margin: auto;
+    height: 50px;
+    font-family: Roboto-Regular;
+    font-size: 16px;
+    color: #ffffff;
+    border: none;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    margin-top: 3px;
+    background-color: #576572;
+}
+
+#table{
+	width: 100%;
+    background-color: white;
+    border-bottom: 3px solid #bdbdbd;
+}
+
+.heading{
+	width: 100%;
+    background-color: #6b6b6b;
+    color: #f2f2f2;
+    font-family: Calisto;
+    font-size: 15px;
+}
+
+.th{
+    display: inline-block;
+    text-align: center;
+    font-family: Calisto;
+    font-size: 18px;
+    padding: 8px 0;
+    width: 50%;
+}
+
+.th2{
+    display: inline-block;
+    text-align: center;
+    font-family: Calisto;
+    font-size: 18px;
+    padding: 8px 0;
+    width: 33.33%;
+}
+
+.row{
+	width: 100%;
+    height: 30px;
+}
+
+.column1, .column2, .column3{
+	text-align: center;
+    font-family: Calisto;
+    height: 30px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 33.33%;
+    display: table-cell;
+    border: none;
+    border-top: 1px solid #d9d9d9;
+    border-left: 1px solid #d9d9d9;
+}
+
+.column4, .column5{
+	text-align: center;
+    font-family: Calisto;
+    height: 30px;
+    width: 50%;
+    border: none;
+    border-top: 1px solid #d9d9d9;
+    border-left: 1px solid #d9d9d9;
+}
+
+.column5{
+    border-right: 1px solid #d9d9d9;
+}
+
+.stage{
+    color: #929292;
+    margin-bottom: 10px;
+}
+
+.basebutton{
+    text-align: center;
+    margin-top: 36px;
+    margin-bottom: 26px;
+    height: 30px;
+}
+
+.button{
+    width: 250px;
+    height: 45px;
+    font-family: Roboto-Black;
+    font-size: 18px;
+    color: white;
+    border-radius: 6px;
+    border: none;
+    background-color: #576572;
+}
+
+.center{
+    text-align: center;
+}
+
+.margin_top {
+    margin-top: 100px;
+}
+
+.textinput{
+    height: 45px;
+    width: 70%;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 2px solid #c7c7c7;
+    text-align: center;
+}
+
+.buttpack{
+    width: 100%;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.showgp{
+    width: 100%;
+    font-family: 'Rockwell';
+    color: #6b6b6b;
+    text-align: center;
+    font-size: 100px;
+    margin: 20vh 0 0;
+}
+
+#select {
+    font-family: Roboto-Black;
+    color: #f5f5f5;
+    width: 50%;
+    font-size: 20px;
+    height: 35px;
+    border: none;
+    border-left: 1px solid grey;
+    background-color: #949494;
+}
+
+#select2{
+    font-family: Roboto-Black;
+    color: #f5f5f5;
+    width: 50%;
+    font-size: 20px;
+    height: 35px;
+    border: none;
+    background-color: #949494;
+}
+
+#select3 {
+    font-family: Roboto-Black;
+    color: #ececec;
+    width: 100%;
+    font-size: 20px;
+    height: 35px;
+    border: none;
+    border-bottom: 1px solid #5a5a5a;
+    background-color: #949494;
+}
+
+.ask {
+    font-family: Roboto-Black;
+    font-size: 19px;
+    color: #505050;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.margin {
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+a{
+    text-decoration: none;
+    color: #6b6b6b;
+}
+
+.topbutt {
+    margin-bottom: 10px;
+}
+
+.ftitle{
+    font-family: Rockwell;
+    font-size: 18px;
+    color: #424242;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.fdig{
+    font-family: Rockwell;
+    font-size: 100px;
+    text-align: center;
+    color: #424242;
+    padding: 40px 0;
+}
+
+.previ{
+    font-family: Rockwell;
+    padding-left: 20px;
+    font-size: 20px;
+    color: #424242;
+}
+
+.container{
+    position: relative;
+    width: 100%;
+}
+
+.option{
+    position: relative;
+}
+
+input[type=radio]{
+  position: absolute;
+  visibility: hidden;
+}
+
+label{
+    display: block;
+    position: relative;
+    font-weight: 300;
+    font-size: 1.10em;
+    padding: 10px 70px;
+    z-index: 9;
+    color: #6b6b6b;
+    cursor: pointer;
+}
+
+.check {
+    display: block;
+    position: absolute;
+    border: 5px solid #98a1ab;
+    border-radius: 100%;
+    height: 25px;
+    width: 25px;
+    top: 4px;
+    left: 20px;
+    z-index: 5;
+}
+
+.check::before {
+  display: block;
+  position: absolute;
+	content: '';
+  border-radius: 100%;
+  height: 15px;
+  width: 15px;
+  top: 5px;
+	left: 5px;
+  margin: auto;
+}
+
+input[type=radio]:checked ~ .check::before{
+  background: #728396;
 }
