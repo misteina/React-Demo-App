@@ -18,10 +18,10 @@ export default class LectureTable extends React.Component {
     }
     handleChange(e) {
         var input = e.target.value.trim();
+        let cell = e.target.dataset.cell;
+        let row = parseInt(cell[0]);
+        let block = parseInt(cell[1]);
         if (input.length > 0) {
-            let cell = e.target.dataset.cell;
-            let row = parseInt(cell[0]);
-            let block = parseInt(cell[1]);
             this.data[this.today][row][block] = input;
         } else {
             this.data[this.today][row][block] = '';

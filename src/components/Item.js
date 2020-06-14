@@ -5,9 +5,9 @@ export default function Item(props) {
         props.back("menu");
     }
     return (
-        <React.Fragment>
+        <div className="menuopt">
             <div id="title"><div onClick={handleClick}>&#x2770;</div>{props.title}</div>
             <div id="body">{props.body}</div>
-        </React.Fragment>
+        </div>
     );
 }

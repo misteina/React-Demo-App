@@ -3,6 +3,9 @@ import React from 'react';
 export default class ComputeGradePoint extends React.Component {
     constructor() {
         super();
+        this.result = React.createRef();
+        this.courses = React.createRef();
+
         this.storeCourses = this.storeCourses.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.compute = this.compute.bind(this);
@@ -35,7 +38,7 @@ export default class ComputeGradePoint extends React.Component {
         this.setState((state) => ({ data: this.data, view: "table" }));
     }
     storeCourses() {
-        var courses = parseInt(this.refs.courses.value);
+        var courses = parseInt(this.courses.current.value);
         if (isNaN(courses) || courses > 20) {
             alert('Please enter a valid number of courses.');
             return;
@@ -60,9 +63,9 @@ export default class ComputeGradePoint extends React.Component {
         if (noValue > 0) {
             alert("The table is not completely filled");
         } else {
-            var multiply = 0, units = 0, point = 0;
+            var multiply = 0, units = 0;
             var grades = ["F", "E", "D", "C", "B", "A"];
-            for (var i = 0; i < this.data[1]; i++) {
+            for (i = 0; i < this.data[1]; i++) {
                 multiply += grades.indexOf(this.data[0][i][2]) * parseInt(this.data[0][i][1]);
                 units += parseInt(this.data[0][i][1]);
             }
@@ -77,7 +80,7 @@ export default class ComputeGradePoint extends React.Component {
         this.setState((state) => ({ data: this.data, view: "courses" }));
     }
     goBack() {
-        if (typeof (this.refs.res) !== 'undefined') {
+        if (this.result.current !== null) {
             this.setState((state) => ({ data: this.data, view: "table" }));
             return null;
         }
@@ -90,7 +93,7 @@ export default class ComputeGradePoint extends React.Component {
                 <React.Fragment>
                     <div className="center">
                         <div className="margin_top">
-                            <input className="textinput" type="text" maxLength="2" id="courses" ref="courses" placeHolder="Number of courses" /><br />
+                            <input className="textinput" type="text" maxLength="2" id="courses" ref={this.courses} placeholder="Number of courses" /><br />
                             <input className="button" type="button" value="Submit" onClick={this.storeCourses} />
                         </div>
                     </div>
@@ -103,13 +106,13 @@ export default class ComputeGradePoint extends React.Component {
                 <React.Fragment>
                     <div id="table">
                         {(() => {
-                            let table = [<div className="heading"><div className="th2">Courses</div><div className="th2">Units</div><div className="th2">Grade</div></div>];
+                            let table = [<div className="heading" key="heading"><div className="th2">Courses</div><div className="th2">Units</div><div className="th2">Grade</div></div>];
                             for (var i = 0; i < this.data[1]; i++) {
                                 table[i] = (
-                                    <div className="row">
-                                        <input type="text" maxLength="10" data-cell={i.toString() + "0"} className="column1" value={this.data[0][i][0]} onChange={this.handleChange} />
-                                        <input type="text" maxLength="10" data-cell={i.toString() + "1"} className="column2" value={this.data[0][i][1]} onChange={this.handleChange} />
-                                        <input type="text" maxLength="10" data-cell={i.toString() + "2"} className="column3" value={this.data[0][i][2]} onChange={this.handleChange} />
+                                    <div className="row" key={i}>
+                                        <input type="text" maxLength="10" data-cell={i.toString() + "0"} className="column1" defaultValue={this.data[0][i][0]} onChange={this.handleChange} />
+                                        <input type="text" maxLength="10" data-cell={i.toString() + "1"} className="column2" defaultValue={this.data[0][i][1]} onChange={this.handleChange} />
+                                        <input type="text" maxLength="10" data-cell={i.toString() + "2"} className="column3" defaultValue={this.data[0][i][2]} onChange={this.handleChange} />
                                     </div>
                                 );
                             }
@@ -127,7 +130,7 @@ export default class ComputeGradePoint extends React.Component {
             //Show computation result
             return (
                 <React.Fragment>
-                    <div className="showgp" ref="res">{this.gradePoint}</div>
+                    <div className="showgp" ref={this.result}>{this.gradePoint}</div>
                 </React.Fragment>
             );
         }

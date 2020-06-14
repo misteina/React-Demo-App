@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default function Menu(props) {
     const handleClick = e => {
         var button = e.target.dataset.button;

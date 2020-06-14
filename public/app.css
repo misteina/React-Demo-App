@@ -35,6 +35,11 @@ html, body{
 *[contenteditable]{
 	-webkit-user-select: auto;
 }
+
+input{
+    margin: 0;
+    padding: 0;
+}
 #app{
     width: 100vw;
     height: 100vh;
@@ -68,14 +73,18 @@ html, body{
 
 .menu {
     position: absolute;
-    width: 100vw;
-    height: 70vh;
+    width: 100%;
+    max-width: 500px;
+    min-width: 350px;
+    height: 530px;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
+    padding-top: 100px;
     margin: auto;
     text-align: center;
+    background-color: #1f2831;
 }
 
 .menubutt{
@@ -92,6 +101,15 @@ html, body{
     border-radius: 10px;
     margin-top: 3px;
     background-color: #576572;
+}
+
+.menuopt{
+    width: 100%;
+    max-width: 500px;
+    min-width: 350px;
+    height: 630px;
+    margin: auto;
+    background-color: #e0e0e0;
 }
 
 #table{
@@ -127,36 +145,30 @@ html, body{
 }
 
 .row{
-	width: 100%;
+    width: 100%;
     height: 30px;
 }
 
 .column1, .column2, .column3{
 	text-align: center;
     font-family: Calisto;
-    height: 30px;
+    height: 29px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     width: 33.33%;
     display: table-cell;
     border: none;
-    border-top: 1px solid #d9d9d9;
-    border-left: 1px solid #d9d9d9;
+    outline: 1px solid #d9d9d9;
 }
 
 .column4, .column5{
 	text-align: center;
     font-family: Calisto;
-    height: 30px;
+    height: 29px;
     width: 50%;
     border: none;
-    border-top: 1px solid #d9d9d9;
-    border-left: 1px solid #d9d9d9;
-}
-
-.column5{
-    border-right: 1px solid #d9d9d9;
+    outline: 1px solid #d9d9d9;
 }
 
 .stage{

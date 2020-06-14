@@ -14,7 +14,7 @@ export default class App extends React.Component {
         this.gpRef = React.createRef();
     }
     handleClick = param => {
-        if (typeof this.gpRef.current !== 'undefined') {
+        if (this.gpRef.current !== null) {
             if (this.gpRef.current.goBack() === "menu") this.setState(state => ({ view: param }));
         } else {
             this.setState(state => ({ view: param }));
@@ -32,6 +32,8 @@ export default class App extends React.Component {
                 return <Item back={this.handleClick} title="Compute Grade Point" body={<ComputeGradePoint ref={this.gpRef} />} />;
             case "exam":
                 return <Item back={this.handleClick} title="Exam Time Table" body={<ExamTable />} />;
+            default:
+                return <Menu choose={this.handleClick} />;
         }
     }
 }

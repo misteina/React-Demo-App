@@ -10,7 +10,6 @@ export default class ExamTable extends React.Component {
         this.saveData = this.saveData.bind(this);
 
         this.data = JSON.parse(localStorage.getItem("exam"));
-        this.state = { data: this.data };
         if (this.data === null) {
             var store = [[], [], []];
             for (var i = 0; i < 3; i++) {
@@ -19,14 +18,17 @@ export default class ExamTable extends React.Component {
                 }
             }
             this.data = [store, 0];
+            this.state = { data: this.data };
+        } else {
+            this.state = { data: this.data };
         }
     }
     handleChange(e) {
         var input = e.target.value;
+        const { cell } = e.target.dataset;
+        const row = parseInt(cell[0]);
+        const block = parseInt(cell[1]);
         if (input.trim().length > 0) {
-            const { cell } = e.target.dataset;
-            const row = parseInt(cell[0]);
-            const block = parseInt(cell[1]);
             this.data[0][this.data[1]][this.today][row][block] = input;
         } else {
             this.data[0][this.data[1]][this.today][row][block] = '';
